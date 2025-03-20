@@ -53,6 +53,21 @@ namespace Winform_Grab
                         matchedCustomer = c;
                         break;
                     }
+                    else if (c.PhoneNumber == phoneNumber && c.Password != password)
+                    {
+                        MessageBox.Show("Sai mật khẩu. Xin vui lòng thử lại",
+                                   "Đăng nhập thất bại",
+                                   MessageBoxButtons.OK);
+                        break;
+                        
+                    }
+                    else if (c.PhoneNumber != phoneNumber && c.Password != password)
+                    {
+                        MessageBox.Show("SĐT này chưa đăng ký",
+                                   "Đăng nhập thất bại",
+                                   MessageBoxButtons.OK);
+                        break; ;
+                    }
                 }
       
             }

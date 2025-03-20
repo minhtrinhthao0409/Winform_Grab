@@ -80,6 +80,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "SHOW INFORMATION";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // logOut
             // 
@@ -97,6 +98,7 @@
             // 
             this.txtHello.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHello.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHello.HideSelection = false;
             this.txtHello.Location = new System.Drawing.Point(34, 200);
             this.txtHello.Multiline = true;
             this.txtHello.Name = "txtHello";

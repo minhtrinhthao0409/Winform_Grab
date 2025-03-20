@@ -55,5 +55,12 @@ namespace Winform_Grab
             new frmLogin().Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ShowInfor showInfo = new ShowInfor(this);
+            showInfo.Show();
+            this.Hide();
+        }
     }
 }

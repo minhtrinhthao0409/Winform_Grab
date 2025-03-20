@@ -91,3 +91,4 @@ D:\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winform_Grab.MainForm.resources
 D:\GitHub\Winform_Grab\Winform_Grab\bin\Debug\ExCSS.dll
 D:\GitHub\Winform_Grab\Winform_Grab\bin\Debug\Svg.dll
 D:\GitHub\Winform_Grab\Winform_Grab\bin\Debug\Svg.xml
+D:\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winform_Grab.ShowInfor.resources

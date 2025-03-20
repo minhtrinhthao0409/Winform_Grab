@@ -87,3 +87,7 @@ C:\Users\Administrator\Documents\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winf
 C:\Users\Administrator\Documents\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winform_.805FC1F1.Up2Date
 C:\Users\Administrator\Documents\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winform_Grab.exe
 C:\Users\Administrator\Documents\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winform_Grab.pdb
+D:\GitHub\Winform_Grab\Winform_Grab\obj\Debug\Winform_Grab.MainForm.resources
+D:\GitHub\Winform_Grab\Winform_Grab\bin\Debug\ExCSS.dll
+D:\GitHub\Winform_Grab\Winform_Grab\bin\Debug\Svg.dll
+D:\GitHub\Winform_Grab\Winform_Grab\bin\Debug\Svg.xml

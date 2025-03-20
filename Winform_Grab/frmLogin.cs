@@ -51,13 +51,15 @@ namespace Winform_Grab
                     }
                 }
             }
-
             // Xử lý kết quả sau khi kiểm tra hết danh sách
             if (matchedCustomer != null)
             {
-                MessageBox.Show("Đăng nhập thành công",
-                                "Đăng nhập thành công",
-                                MessageBoxButtons.OK);
+                //MessageBox.Show("Đăng nhập thành công",
+                //                "Đăng nhập thành công",
+                //                MessageBoxButtons.OK);
+                MainForm mainForm = new MainForm(matchedCustomer);
+                mainForm.Show();
+                this.Hide();
             }
             else if (phoneNumberExists)
             {
@@ -71,8 +73,6 @@ namespace Winform_Grab
                                 "Đăng nhập thất bại",
                                 MessageBoxButtons.OK);
             }
-
-
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -101,6 +101,11 @@ namespace Winform_Grab
             txtPassword.Clear();
             txtUsername.Clear();
             checkboxShowPas.Checked = false;
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

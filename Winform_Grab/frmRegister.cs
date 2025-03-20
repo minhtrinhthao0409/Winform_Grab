@@ -137,8 +137,6 @@ namespace Winform_Grab
             // Quay lại trang đăng nhập
             new frmLogin().Show();
             this.Close();
-            
-           
         }
 
         private void label7_Click(object sender, EventArgs e)

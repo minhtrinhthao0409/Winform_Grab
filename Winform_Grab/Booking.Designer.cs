@@ -33,7 +33,6 @@
             this.DropOff = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bt = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -62,6 +61,7 @@
             this.gMapControl1.Size = new System.Drawing.Size(257, 297);
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
+            this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // PickUp
             // 
@@ -72,6 +72,7 @@
             this.PickUp.Size = new System.Drawing.Size(256, 27);
             this.PickUp.TabIndex = 2;
             this.PickUp.Text = "Pick-up Location";
+            this.PickUp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PickUp_MouseClick);
             // 
             // DropOff
             // 
@@ -82,6 +83,7 @@
             this.DropOff.Size = new System.Drawing.Size(256, 27);
             this.DropOff.TabIndex = 3;
             this.DropOff.Text = "Drop-off Location";
+            this.DropOff.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DropOff_MouseClick);
             // 
             // comboBox1
             // 
@@ -101,7 +103,7 @@
             this.bt.FlatAppearance.BorderSize = 0;
             this.bt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt.ForeColor = System.Drawing.Color.White;
-            this.bt.Location = new System.Drawing.Point(150, 464);
+            this.bt.Location = new System.Drawing.Point(15, 471);
             this.bt.Name = "bt";
             this.bt.Size = new System.Drawing.Size(120, 29);
             this.bt.TabIndex = 5;
@@ -109,26 +111,13 @@
             this.bt.UseVisualStyleBackColor = false;
             this.bt.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightGray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.DimGray;
-            this.button2.Location = new System.Drawing.Point(13, 464);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 29);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.label1.Location = new System.Drawing.Point(12, 503);
+            this.label1.Location = new System.Drawing.Point(204, 518);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 7;
@@ -142,7 +131,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 544);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.bt);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.DropOff);
@@ -154,6 +142,7 @@
             this.Name = "Booking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Booking";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,7 +155,6 @@
         private System.Windows.Forms.TextBox DropOff;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button bt;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
     }
 }

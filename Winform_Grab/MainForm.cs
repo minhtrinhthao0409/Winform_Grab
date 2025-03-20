@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms;
-using Svg; // Add this for SVG.NET
 
 namespace Winform_Grab
 {
@@ -19,7 +17,7 @@ namespace Winform_Grab
         {
             InitializeComponent();
             currentCustomer = customer;
-            txtHello.Text = "Hello, " + currentCustomer.Name + " Lên xe em đèo nè iu iu.";
+            txtHello.Text = "Hello, " + currentCustomer.Name + " Lên xe em đèo iu iu.";
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)

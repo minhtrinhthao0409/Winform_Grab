@@ -82,6 +82,7 @@ namespace Winform_Grab
 
         private void label6_Click(object sender, EventArgs e)
         {
+            
             new frmRegister().Show();
             this.Hide();
 

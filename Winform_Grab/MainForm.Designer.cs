@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnBooking = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.logOut = new System.Windows.Forms.Label();
             this.txtHello = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBooking
@@ -42,7 +45,7 @@
             this.btnBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBooking.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBooking.ForeColor = System.Drawing.Color.White;
-            this.btnBooking.Location = new System.Drawing.Point(23, 331);
+            this.btnBooking.Location = new System.Drawing.Point(34, 347);
             this.btnBooking.Name = "btnBooking";
             this.btnBooking.Size = new System.Drawing.Size(216, 35);
             this.btnBooking.TabIndex = 0;
@@ -57,7 +60,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.button1.Location = new System.Drawing.Point(23, 381);
+            this.button1.Location = new System.Drawing.Point(34, 397);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(216, 35);
             this.button1.TabIndex = 1;
@@ -71,7 +74,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.button2.Location = new System.Drawing.Point(23, 431);
+            this.button2.Location = new System.Drawing.Point(34, 447);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(216, 35);
             this.button2.TabIndex = 2;
@@ -83,7 +86,7 @@
             this.logOut.AutoSize = true;
             this.logOut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOut.Location = new System.Drawing.Point(174, 479);
+            this.logOut.Location = new System.Drawing.Point(185, 503);
             this.logOut.Name = "logOut";
             this.logOut.Size = new System.Drawing.Size(65, 17);
             this.logOut.TabIndex = 3;
@@ -94,12 +97,22 @@
             // 
             this.txtHello.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHello.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHello.Location = new System.Drawing.Point(16, 17);
+            this.txtHello.Location = new System.Drawing.Point(34, 200);
             this.txtHello.Multiline = true;
             this.txtHello.Name = "txtHello";
-            this.txtHello.Size = new System.Drawing.Size(223, 122);
+            this.txtHello.Size = new System.Drawing.Size(216, 122);
             this.txtHello.TabIndex = 4;
             this.txtHello.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(57, 48);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(162, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -107,7 +120,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(269, 505);
+            this.ClientSize = new System.Drawing.Size(285, 544);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtHello);
             this.Controls.Add(this.logOut);
             this.Controls.Add(this.button2);
@@ -121,6 +135,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +148,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label logOut;
         private System.Windows.Forms.TextBox txtHello;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

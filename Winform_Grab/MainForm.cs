@@ -18,9 +18,8 @@ namespace Winform_Grab
         public MainForm(Customer customer)
         {
             InitializeComponent();
-
             currentCustomer = customer;
-            txtHello.Text = "Hello, " + customer.Name + " Lên xe em đèo nè iu iu.";
+            txtHello.Text = "Hello, " + currentCustomer.Name + " Lên xe em đèo nè iu iu.";
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)
@@ -35,13 +34,14 @@ namespace Winform_Grab
 
         private void btnBooking_Click(object sender, EventArgs e)
         {
-            new Booking().Show();
+            Booking booking = new Booking(this);
+            booking.Show();
             this.Hide();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

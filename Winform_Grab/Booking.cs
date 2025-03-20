@@ -12,9 +12,11 @@ namespace Winform_Grab
 {
     public partial class Booking: Form
     {
-        public Booking()
+        private MainForm parentForm;
+        public Booking(MainForm p)
         {
             InitializeComponent();
+            parentForm = p;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -26,10 +28,18 @@ namespace Winform_Grab
         {
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            parentForm.Show();
+            this.Close();
         }
     }
 }

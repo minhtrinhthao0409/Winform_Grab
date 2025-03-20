@@ -86,7 +86,7 @@
             // 
             this.logOut.AutoSize = true;
             this.logOut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOut.Location = new System.Drawing.Point(185, 503);
             this.logOut.Name = "logOut";
             this.logOut.Size = new System.Drawing.Size(65, 17);

@@ -58,7 +58,7 @@ namespace Winform_Grab
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ShowInfor showInfo = new ShowInfor(this);
+            ShowInfor showInfo = new ShowInfor(this, currentCustomer);
             showInfo.Show();
             this.Hide();
         }

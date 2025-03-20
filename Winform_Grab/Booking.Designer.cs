@@ -126,6 +126,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
             this.label1.Location = new System.Drawing.Point(12, 503);
             this.label1.Name = "label1";

@@ -116,13 +116,25 @@ namespace Winform_Grab
                     return;
                 }
             }
+            string GenerateUniqueId()
+            {
+                // Lấy năm và tháng hiện tại
+                string timestamp = DateTime.Now.ToString("yyyyMM"); // Ví dụ: "202503" cho tháng 3 năm 2025
+                                                                    // Tạo số random từ 1000 đến 9999
+                string randomPart = new Random().Next(1000, 9999).ToString();
+
+                // Kết hợp timestamp và random
+                return timestamp + randomPart; // Ví dụ: "2025031234"
+            }
 
             // Tạo khách hàng mới
             Customer newCustomer = new Customer
             {
+                Id = GenerateUniqueId(),
                 PhoneNumber = phoneNumber,
                 Password = password,
                 Name = name,
+
             };
 
             // Thêm vào danh sách

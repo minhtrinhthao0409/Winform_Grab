@@ -3,6 +3,9 @@ using GMap.NET;
 using GMap.NET.WindowsForms;
 using System;
 using System.Windows.Forms;
+using GMap.NET.WindowsForms.Markers;
+using System.Drawing;
+using System.Collections.Generic;
 
 namespace Winform_Grab
 {
@@ -35,7 +38,66 @@ namespace Winform_Grab
 
             // Ẩn dấu "+" ở giữa bản đồ
             gMapControl1.ShowCenter = false;
+
+            // Initialize overlay for markers and routes
+            markersOverlay = new GMapOverlay("markers");
+            gMapControl1.Overlays.Add(markersOverlay);
         }
+        private GMapOverlay markersOverlay;
+        //private PointLatLng? pickupPoint = null;  // Store pickup location
+        //private PointLatLng? dropoffPoint = null;
+        //private void gMapControl1_MouseClick(object sender, MouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        // Convert click coordinates to latitude/longitude
+        //        PointLatLng point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
+
+        //        if (pickupPoint == null) // Set pickup point
+        //        {
+        //            pickupPoint = point;
+        //            AddMarker(point, GMarkerGoogleType.green_dot, "Pick-up");
+        //            PickUp.Text = $"Pick-up: {point.Lat}, {point.Lng}";
+        //        }
+        //        else if (dropoffPoint == null) // Set dropoff point
+        //        {
+        //            dropoffPoint = point;
+        //            AddMarker(point, GMarkerGoogleType.red_dot, "Drop-off");
+        //            DropOff.Text = $"Drop-off: {point.Lat}, {point.Lng}";
+
+        //            // Draw line between pickup and dropoff
+        //            DrawRoute();
+        //        }
+        //    }
+        //}
+        //// Method to add a marker to the map
+        //private void AddMarker(PointLatLng point, GMarkerGoogleType type, string tooltip)
+        //{
+        //    GMarkerGoogle marker = new GMarkerGoogle(point, type);
+        //    marker.ToolTipText = tooltip;
+        //    marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+        //    markersOverlay.Markers.Add(marker);
+        //    gMapControl1.Refresh();
+        //}
+
+        //// Method to draw a straight line between pickup and dropoff points
+        //private void DrawRoute()
+        //{
+        //    if (pickupPoint != null && dropoffPoint != null)
+        //    {
+        //        // Clear previous routes
+        //        markersOverlay.Routes.Clear();
+
+        //        // Create a route with the two points
+        //        var routePoints = new List<PointLatLng> { pickupPoint.Value, dropoffPoint.Value };
+        //        GMapRoute route = new GMapRoute(routePoints, "PickupToDropoff");
+        //        route.Stroke = new Pen(Color.Blue, 2); // Blue line with thickness 2
+
+        //        // Add route to overlay
+        //        markersOverlay.Routes.Add(route);
+        //        gMapControl1.Refresh();
+        //    }
+        //}
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -44,7 +106,13 @@ namespace Winform_Grab
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string selectedOption = vehicle.SelectedItem.ToString().ToLower();
+            bool type = true;
+            double distance = 10;
+            double fare;
+            if (selectedOption == "car") type = false;
+            fare = PriceCalculator.CalculatePrice(distance , type);
+            distanceFare.Text = $"Distance: {distance} km\nFare: {fare:N0} VND";
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -101,6 +169,11 @@ namespace Winform_Grab
         private void Booking_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        private void Booking_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

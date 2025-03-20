@@ -31,9 +31,10 @@
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.PickUp = new System.Windows.Forms.TextBox();
             this.DropOff = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.vehicle = new System.Windows.Forms.ComboBox();
             this.bt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.distanceFare = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gMapControl1
@@ -85,17 +86,17 @@
             this.DropOff.Text = "Drop-off Location";
             this.DropOff.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DropOff_MouseClick);
             // 
-            // comboBox1
+            // vehicle
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.vehicle.FormattingEnabled = true;
+            this.vehicle.Items.AddRange(new object[] {
             "Car",
             "Bike"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 423);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 25);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.vehicle.Location = new System.Drawing.Point(13, 423);
+            this.vehicle.Name = "vehicle";
+            this.vehicle.Size = new System.Drawing.Size(120, 25);
+            this.vehicle.TabIndex = 4;
+            this.vehicle.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // bt
             // 
@@ -124,15 +125,25 @@
             this.label1.Text = "GO BACK";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // distanceFare
+            // 
+            this.distanceFare.AutoSize = true;
+            this.distanceFare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.distanceFare.Location = new System.Drawing.Point(156, 424);
+            this.distanceFare.Name = "distanceFare";
+            this.distanceFare.Size = new System.Drawing.Size(0, 17);
+            this.distanceFare.TabIndex = 8;
+            // 
             // Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 544);
+            this.Controls.Add(this.distanceFare);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bt);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.vehicle);
             this.Controls.Add(this.DropOff);
             this.Controls.Add(this.PickUp);
             this.Controls.Add(this.gMapControl1);
@@ -143,6 +154,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Booking";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Booking_FormClosing);
+            this.Load += new System.EventHandler(this.Booking_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,8 +165,9 @@
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
         private System.Windows.Forms.TextBox PickUp;
         private System.Windows.Forms.TextBox DropOff;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox vehicle;
         private System.Windows.Forms.Button bt;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label distanceFare;
     }
 }

@@ -6,8 +6,10 @@ using System.IO;
 
 namespace Winform_Grab
 {
+    
     public partial class frmLogin: Form
     {
+
         private string jsonFilePath = "customers.json";
         public frmLogin()
         {
@@ -22,61 +24,55 @@ namespace Winform_Grab
             // Kiểm tra đầu vào
             if (string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!", "Đăng nhập thất bại", MessageBoxButtons.OK);
+                MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!",
+                                "Đăng nhập thất bại",
+                                MessageBoxButtons.OK);
                 return;
             }
-            try
+
+            // Đọc danh sách khách hàng từ file JSON
+            List<Customer> customers;
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            customers = JsonSerializer.Deserialize<List<Customer>>(jsonContent);
+
+            // Kiểm tra đăng nhập
+            Customer matchedCustomer = null;
+            bool phoneNumberExists = false;
+
+            foreach (Customer c in customers)
             {
-                List<Customer> customers;
-
-                // Đọc danh sách khách hàng hiện có từ file JSON
-                if (File.Exists(jsonFilePath))
+                if (c.PhoneNumber == phoneNumber)
                 {
-                    string jsonContent = File.ReadAllText(jsonFilePath);
-                    customers = JsonSerializer.Deserialize<List<Customer>>(jsonContent);
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy dữ liệu người dùng!",
-                                   "Đăng nhập thất bại",
-                                   MessageBoxButtons.OK);
-                    return;
-                }
-
-                Customer matchedCustomer = null;
-                foreach (Customer c in customers)
-                {
-                    
-
-                    if (c.PhoneNumber == phoneNumber && c.Password == password)
+                    phoneNumberExists = true; // Đánh dấu số điện thoại tồn tại
+                    if (c.Password == password)
                     {
-                        matchedCustomer = c;
+                        matchedCustomer = c; // Tìm thấy khách hàng khớp
                         break;
                     }
-                    else if (c.PhoneNumber == phoneNumber && c.Password != password)
-                    {
-                        MessageBox.Show("Sai mật khẩu. Xin vui lòng thử lại",
-                                   "Đăng nhập thất bại",
-                                   MessageBoxButtons.OK);
-                        break;
-                        
-                    }
-                    else if (c.PhoneNumber != phoneNumber && c.Password != password)
-                    {
-                        MessageBox.Show("SĐT này chưa đăng ký",
-                                   "Đăng nhập thất bại",
-                                   MessageBoxButtons.OK);
-                        break; ;
-                    }
                 }
-      
             }
-            catch (Exception ex)
+
+            // Xử lý kết quả sau khi kiểm tra hết danh sách
+            if (matchedCustomer != null)
             {
-                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}",
-                               "Lỗi hệ thống",
-                               MessageBoxButtons.OK);
+                MessageBox.Show("Đăng nhập thành công",
+                                "Đăng nhập thành công",
+                                MessageBoxButtons.OK);
             }
+            else if (phoneNumberExists)
+            {
+                MessageBox.Show("Sai mật khẩu. Xin vui lòng thử lại",
+                                "Đăng nhập thất bại",
+                                MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("SĐT này chưa đăng ký",
+                                "Đăng nhập thất bại",
+                                MessageBoxButtons.OK);
+            }
+
+
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)

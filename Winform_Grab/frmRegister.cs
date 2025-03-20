@@ -93,53 +93,52 @@ namespace Winform_Grab
                 MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
-            try
+            
+            List<Customer> customers;
+
+            // Đọc danh sách khách hàng hiện có từ file JSON
+            if (File.Exists(jsonFilePath))
             {
-                List<Customer> customers;
-
-                // Đọc danh sách khách hàng hiện có từ file JSON
-                if (File.Exists(jsonFilePath))
-                {
-                    string jsonContent = File.ReadAllText(jsonFilePath);
-                    customers = JsonSerializer.Deserialize<List<Customer>>(jsonContent);
-                }
-                else
-                {
-                    customers = new List<Customer>(); // Nếu file chưa tồn tại, tạo danh sách mới
-                }
-
-                // Kiểm tra xem số điện thoại đã tồn tại chưa
-                foreach (Customer customer in customers)
-                {
-                    if (customer.PhoneNumber == phoneNumber)
-                    {
-                        MessageBox.Show("Số điện thoại này đã được đăng ký!");
-                        return;
-                    }
-                }
-
-                // Tạo khách hàng mới
-                Customer newCustomer = new Customer
-                {
-                    PhoneNumber = phoneNumber,
-                    Password = password,
-                    Name = name,
-                };
-
-                // Thêm vào danh sách
-                customers.Add(newCustomer);
-
-                // Ghi lại vào file JSON (serialize)
-                string updatedJson = JsonSerializer.Serialize(customers, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(jsonFilePath, updatedJson);
-
-                MessageBox.Show("Đăng ký thành công!");
-                this.Close(); // Đóng form sau khi đăng ký thành công
+                string jsonContent = File.ReadAllText(jsonFilePath);
+                customers = JsonSerializer.Deserialize<List<Customer>>(jsonContent);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                customers = new List<Customer>(); // Nếu file chưa tồn tại, tạo danh sách mới
             }
+
+            // Kiểm tra xem số điện thoại đã tồn tại chưa
+            foreach (Customer customer in customers)
+            {
+                if (customer.PhoneNumber == phoneNumber)
+                {
+                    MessageBox.Show("Số điện thoại này đã được đăng ký!");
+                    return;
+                }
+            }
+
+            // Tạo khách hàng mới
+            Customer newCustomer = new Customer
+            {
+                PhoneNumber = phoneNumber,
+                Password = password,
+                Name = name,
+            };
+
+            // Thêm vào danh sách
+            customers.Add(newCustomer);
+
+            // Ghi lại vào file JSON (serialize)
+            string updatedJson = JsonSerializer.Serialize(customers, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(jsonFilePath, updatedJson);
+
+            MessageBox.Show("Đăng ký thành công!");
+                
+            // Quay lại trang đăng nhập
+            new frmLogin().Show();
+            this.Close();
+            
+           
         }
 
         private void label7_Click(object sender, EventArgs e)

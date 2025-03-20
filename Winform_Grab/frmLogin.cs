@@ -43,25 +43,18 @@ namespace Winform_Grab
                     return;
                 }
 
-                // Kiểm tra thông tin đăng nhập
-                // Kiểm tra thông tin đăng nhập
                 Customer matchedCustomer = null;
                 foreach (Customer c in customers)
                 {
-                    // Chuẩn hóa dữ liệu trước khi so sánh
-                    string jsonPhone = c.PhoneNumber != null ? c.PhoneNumber.Trim() : "";
-                    string jsonPass = c.Password != null ? c.Password.Trim() : "";
+                    
 
-                    if (jsonPhone == phoneNumber && jsonPass == password)
+                    if (c.PhoneNumber == phoneNumber && c.Password == password)
                     {
                         matchedCustomer = c;
                         break;
                     }
                 }
-                // Đăng nhập thành công
-                //MessageBox.Show("Đăng nhập thành công!",
-                //               "Thành công",
-                //               MessageBoxButtons.OK);
+      
             }
             catch (Exception ex)
             {

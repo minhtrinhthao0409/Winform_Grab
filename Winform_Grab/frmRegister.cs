@@ -83,11 +83,6 @@ namespace Winform_Grab
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPassword.Text == "")
-            //{
-            //    MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống", "Đăng ký thất bại", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-
             string phoneNumber = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
             string name = txtName.Text.Trim();  
@@ -98,7 +93,6 @@ namespace Winform_Grab
                 MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
-
             try
             {
                 List<Customer> customers;

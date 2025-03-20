@@ -17,8 +17,7 @@ namespace Winform_Grab
         private void button1_Click(object sender, EventArgs e)
         {
             string phoneNumber = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
-            
+            string password = txtPassword.Text;
 
             // Kiểm tra đầu vào
             if (string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(password))
@@ -38,24 +37,37 @@ namespace Winform_Grab
                 }
                 else
                 {
-                    customers = new List<Customer>(); // Nếu file chưa tồn tại, tạo danh sách mới
+                    MessageBox.Show("Không tìm thấy dữ liệu người dùng!",
+                                   "Đăng nhập thất bại",
+                                   MessageBoxButtons.OK);
+                    return;
                 }
 
-                // Kiểm tra xem số điện thoại đã tồn tại chưa
-                foreach (Customer customer in customers)
+                // Kiểm tra thông tin đăng nhập
+                // Kiểm tra thông tin đăng nhập
+                Customer matchedCustomer = null;
+                foreach (Customer c in customers)
                 {
-                    if (customer.PhoneNumber != phoneNumber)
+                    // Chuẩn hóa dữ liệu trước khi so sánh
+                    string jsonPhone = c.PhoneNumber != null ? c.PhoneNumber.Trim() : "";
+                    string jsonPass = c.Password != null ? c.Password.Trim() : "";
+
+                    if (jsonPhone == phoneNumber && jsonPass == password)
                     {
-                        MessageBox.Show("Số điện thoại này chưa được đăng ký!", "Đăng nhập thất bại", MessageBoxButtons.OK);
-                        return;
+                        matchedCustomer = c;
+                        break;
                     }
                 }
-
-                
+                // Đăng nhập thành công
+                //MessageBox.Show("Đăng nhập thành công!",
+                //               "Thành công",
+                //               MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}",
+                               "Lỗi hệ thống",
+                               MessageBoxButtons.OK);
             }
         }
 

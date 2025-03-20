@@ -186,51 +186,51 @@ namespace Winform_Grab
         }
     }
 
-    public class Login
-    {
-        public static Customer CusLogin()
-        {
-            bool check = false;
-            Customer currentCustomer = null;
-            while (!check)
-            {
-                Console.WriteLine("Đăng nhập");
-                Console.Write("Nhập số điện thoại: ");
-                string phoneNumber;
-                int number;
-                while (!int.TryParse(phoneNumber = Console.ReadLine(), out number))
+    //public class Login
+    //{
+    //    public static Customer CusLogin()
+    //    {
+    //        bool check = false;
+    //        Customer currentCustomer = null;
+    //        while (!check)
+    //        {
+    //            Console.WriteLine("Đăng nhập");
+    //            Console.Write("Nhập số điện thoại: ");
+    //            string phoneNumber;
+    //            int number;
+    //            while (!int.TryParse(phoneNumber = Console.ReadLine(), out number))
 
-                    Console.Write("Nhập mật khẩu: ");
-                string password = Console.ReadLine();
-                //while (!int.TryParse(Console.ReadLine(), out password))
-                //{
-                //    Console.Write("Mật khẩu không hợp lệ. Nhập lại: ");
-                //}
+    //                Console.Write("Nhập mật khẩu: ");
+    //            string password = Console.ReadLine();
+    //            //while (!int.TryParse(Console.ReadLine(), out password))
+    //            //{
+    //            //    Console.Write("Mật khẩu không hợp lệ. Nhập lại: ");
+    //            //}
 
-                check = DataManager.VerifyUserCredentials(phoneNumber, password);
-                if (check)
-                {
-                    Console.WriteLine("Đăng nhập thành công");
-                    currentCustomer = DataManager.GetCustomerByPhoneNumber(phoneNumber);
-                    if (currentCustomer != null)
-                    {
-                        Console.WriteLine($"Xin chào {currentCustomer.Name}");
-                        return currentCustomer;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Không tìm thấy thông tin khách hàng.");
-                        return null;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Sai số điện thoại hoặc mật khẩu. Vui lòng thử lại.");
-                }
-            }
-            return null;
-        }
-    }
+    //            check = DataManager.VerifyUserCredentials(phoneNumber, password);
+    //            if (check)
+    //            {
+    //                Console.WriteLine("Đăng nhập thành công");
+    //                currentCustomer = DataManager.GetCustomerByPhoneNumber(phoneNumber);
+    //                if (currentCustomer != null)
+    //                {
+    //                    Console.WriteLine($"Xin chào {currentCustomer.Name}");
+    //                    return currentCustomer;
+    //                }
+    //                else
+    //                {
+    //                    Console.WriteLine("Không tìm thấy thông tin khách hàng.");
+    //                    return null;
+    //                }
+    //            }
+    //            else
+    //            {
+    //                Console.WriteLine("Sai số điện thoại hoặc mật khẩu. Vui lòng thử lại.");
+    //            }
+    //        }
+    //        return null;
+    //    }
+    //}
 
     public class Book
     {

@@ -12,6 +12,7 @@ namespace Winform_Grab
 {
     public partial class frmLogin: Form
     {
+        private string jsonFilePath = "customer.json";
         public frmLogin()
         {
             InitializeComponent();

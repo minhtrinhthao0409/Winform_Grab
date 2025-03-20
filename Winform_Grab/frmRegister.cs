@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Winform_Grab
 {
+    
     public partial class frmRegister: Form
     {
+        private string jsonFilePath = "customers.json";
         public frmRegister()
         {
             InitializeComponent();
@@ -55,17 +53,97 @@ namespace Winform_Grab
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPassword.Text == "")
-            {
-                MessageBox.Show("Username and Password fields are empty", "Registered failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            txtPassword.Clear();
+            txtUsername.Clear();
+            txtComPassword.Clear();
+            checkboxShowPas.Checked = false;
+        }
 
+        private void checkboxShowPas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkboxShowPas.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                txtComPassword.UseSystemPasswordChar = false;
+
+            }
+            else 
+            { 
+                txtPassword.UseSystemPasswordChar = true;
+                txtComPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPassword.Text == "")
+            {
+                MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống", "Đăng ký thất bại", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            string phoneNumber = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            // Kiểm tra đầu vào
+            if (string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+
+            try
+            {
+                List<Customer> customers;
+
+                // Đọc danh sách khách hàng hiện có từ file JSON
+                if (File.Exists(jsonFilePath))
+                {
+                    string jsonContent = File.ReadAllText(jsonFilePath);
+                    customers = JsonSerializer.Deserialize<List<Customer>>(jsonContent);
+                }
+                else
+                {
+                    customers = new List<Customer>(); // Nếu file chưa tồn tại, tạo danh sách mới
+                }
+
+                // Kiểm tra xem số điện thoại đã tồn tại chưa
+                foreach (Customer customer in customers)
+                {
+                    if (customer.PhoneNumber == phoneNumber)
+                    {
+                        MessageBox.Show("Số điện thoại này đã được đăng ký!");
+                        return;
+                    }
+                }
+
+                // Tạo khách hàng mới
+                Customer newCustomer = new Customer
+                {
+                    PhoneNumber = phoneNumber,
+                    Password = password
+                };
+
+                // Thêm vào danh sách
+                customers.Add(newCustomer);
+
+                // Ghi lại vào file JSON (serialize)
+                string updatedJson = JsonSerializer.Serialize(customers, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(jsonFilePath, updatedJson);
+
+                MessageBox.Show("Đăng ký thành công!");
+                this.Close(); // Đóng form sau khi đăng ký thành công
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
         }
     }
 }

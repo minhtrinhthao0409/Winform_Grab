@@ -83,16 +83,17 @@ namespace Winform_Grab
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPassword.Text == "")
-            {
-                MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống", "Đăng ký thất bại", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPassword.Text == "")
+            //{
+            //    MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống", "Đăng ký thất bại", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
 
             string phoneNumber = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
+            string name = txtName.Text.Trim();  
 
             // Kiểm tra đầu vào
-            if (string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(txtComPassword.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!", "Thông báo", MessageBoxButtons.OK);
                 return;
@@ -127,7 +128,8 @@ namespace Winform_Grab
                 Customer newCustomer = new Customer
                 {
                     PhoneNumber = phoneNumber,
-                    Password = password
+                    Password = password,
+                    Name = name,
                 };
 
                 // Thêm vào danh sách
@@ -144,6 +146,11 @@ namespace Winform_Grab
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
